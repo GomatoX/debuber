@@ -1,0 +1,11 @@
+# Files to exclude from npm package
+# Only dist/ and essential files will be published
+
+src/
+example/
+.github/
+.eslintrc.json
+.prettierrc
+tsconfig.json
+tsup.config.ts
+*.log

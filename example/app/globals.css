@@ -1,0 +1,170 @@
+:root {
+  --bg: #0a0a0a;
+  --fg: #ededed;
+  --accent: #0070f3;
+  --gray: #888;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: var(--gray);
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+}
+
+.card {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+button {
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.btn-debug {
+  background: #333;
+  color: #888;
+}
+
+.btn-debug:hover {
+  background: #444;
+}
+
+.btn-info {
+  background: #0070f3;
+  color: white;
+}
+
+.btn-info:hover {
+  background: #0060d3;
+}
+
+.btn-warn {
+  background: #f5a623;
+  color: #000;
+}
+
+.btn-warn:hover {
+  background: #e09620;
+}
+
+.btn-error {
+  background: #ff4444;
+  color: white;
+}
+
+.btn-error:hover {
+  background: #e03030;
+}
+
+.btn-clear {
+  background: transparent;
+  border: 1px solid #444;
+  color: #888;
+}
+
+.btn-clear:hover {
+  background: #222;
+  color: #fff;
+}
+
+.info-box {
+  background: #1a1a2e;
+  border: 1px solid #0070f3;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 24px;
+}
+
+.info-box h3 {
+  color: #0070f3;
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+.info-box ul {
+  list-style: none;
+  color: var(--gray);
+}
+
+.info-box li {
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.info-box li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #0070f3;
+}
+
+code {
+  background: #2a2a2a;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #f5a623;
+}
+
+.counter {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+  color: var(--accent);
+}

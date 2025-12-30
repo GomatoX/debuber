@@ -1,0 +1,423 @@
+/* Debuber - Dark Theme Styles (Next.js Error Overlay Inspired) */
+
+.debuber-container {
+  --debuber-bg: #1a1a1a;
+  --debuber-bg-secondary: #2a2a2a;
+  --debuber-border: #404040;
+  --debuber-text: #ffffff;
+  --debuber-text-secondary: #a0a0a0;
+  --debuber-debug: #888888;
+  --debuber-info: #0070f3;
+  --debuber-warn: #f5a623;
+  --debuber-error: #ff4444;
+  --debuber-font: 'SF Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
+  --debuber-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --debuber-radius: 8px;
+  --debuber-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+
+  font-family: var(--debuber-font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--debuber-text);
+  z-index: 99999;
+}
+
+/* Floating Bubble */
+.debuber-bubble {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--debuber-bg);
+  border: 1px solid var(--debuber-border);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--debuber-shadow);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  user-select: none;
+}
+
+.debuber-bubble:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 32px rgba(0, 0, 0, 0.5);
+}
+
+.debuber-bubble:active {
+  transform: scale(0.95);
+}
+
+.debuber-bubble--bottom-right {
+  bottom: 20px;
+  right: 20px;
+}
+
+.debuber-bubble--bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+
+.debuber-bubble--top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.debuber-bubble--top-left {
+  top: 20px;
+  left: 20px;
+}
+
+.debuber-bubble__icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  flex-shrink: 0;
+}
+
+.debuber-bubble__badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  background: var(--debuber-error);
+  border-radius: 9px;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.debuber-bubble--has-warn {
+  border-color: var(--debuber-warn);
+}
+
+.debuber-bubble--has-error {
+  border-color: var(--debuber-error);
+}
+
+/* Panel */
+.debuber-panel {
+  position: fixed;
+  background: var(--debuber-bg);
+  border: 1px solid var(--debuber-border);
+  border-radius: var(--debuber-radius);
+  box-shadow: var(--debuber-shadow);
+  display: flex;
+  flex-direction: column;
+  max-height: 70vh;
+  width: 420px;
+  max-width: calc(100vw - 40px);
+  overflow: hidden;
+  animation: debuber-slide-in 0.2s ease;
+}
+
+@keyframes debuber-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.debuber-panel--bottom-right {
+  bottom: 80px;
+  right: 20px;
+}
+
+.debuber-panel--bottom-left {
+  bottom: 80px;
+  left: 20px;
+}
+
+.debuber-panel--top-right {
+  top: 80px;
+  right: 20px;
+}
+
+.debuber-panel--top-left {
+  top: 80px;
+  left: 20px;
+}
+
+/* Panel Header */
+.debuber-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--debuber-border);
+  background: var(--debuber-bg-secondary);
+}
+
+.debuber-panel__title {
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.debuber-panel__actions {
+  display: flex;
+  gap: 8px;
+}
+
+.debuber-panel__btn {
+  background: transparent;
+  border: 1px solid var(--debuber-border);
+  color: var(--debuber-text-secondary);
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.15s ease;
+}
+
+.debuber-panel__btn:hover {
+  background: var(--debuber-border);
+  color: var(--debuber-text);
+}
+
+.debuber-panel__close {
+  background: transparent;
+  border: none;
+  color: var(--debuber-text-secondary);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.debuber-panel__close:hover {
+  background: var(--debuber-border);
+  color: var(--debuber-text);
+}
+
+/* Filters */
+.debuber-panel__filters {
+  display: flex;
+  gap: 8px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--debuber-border);
+  flex-wrap: wrap;
+}
+
+.debuber-panel__search {
+  flex: 1;
+  min-width: 120px;
+  background: var(--debuber-bg-secondary);
+  border: 1px solid var(--debuber-border);
+  color: var(--debuber-text);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  outline: none;
+}
+
+.debuber-panel__search:focus {
+  border-color: var(--debuber-info);
+}
+
+.debuber-panel__search::placeholder {
+  color: var(--debuber-text-secondary);
+}
+
+.debuber-panel__level-filters {
+  display: flex;
+  gap: 4px;
+}
+
+.debuber-panel__level-btn {
+  background: transparent;
+  border: 1px solid var(--debuber-border);
+  color: var(--debuber-text-secondary);
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11px;
+  text-transform: uppercase;
+  transition: all 0.15s ease;
+}
+
+.debuber-panel__level-btn:hover {
+  background: var(--debuber-border);
+}
+
+.debuber-panel__level-btn--active {
+  background: var(--debuber-info);
+  border-color: var(--debuber-info);
+  color: white;
+}
+
+.debuber-panel__level-btn--debug.debuber-panel__level-btn--active {
+  background: var(--debuber-debug);
+  border-color: var(--debuber-debug);
+}
+
+.debuber-panel__level-btn--info.debuber-panel__level-btn--active {
+  background: var(--debuber-info);
+  border-color: var(--debuber-info);
+}
+
+.debuber-panel__level-btn--warn.debuber-panel__level-btn--active {
+  background: var(--debuber-warn);
+  border-color: var(--debuber-warn);
+  color: #000;
+}
+
+.debuber-panel__level-btn--error.debuber-panel__level-btn--active {
+  background: var(--debuber-error);
+  border-color: var(--debuber-error);
+}
+
+/* Log List */
+.debuber-panel__logs {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+.debuber-panel__logs::-webkit-scrollbar {
+  width: 8px;
+}
+
+.debuber-panel__logs::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.debuber-panel__logs::-webkit-scrollbar-thumb {
+  background: var(--debuber-border);
+  border-radius: 4px;
+}
+
+.debuber-panel__empty {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--debuber-text-secondary);
+}
+
+/* Log Entry */
+.debuber-log {
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--debuber-border);
+  font-family: var(--debuber-font);
+  font-size: 12px;
+}
+
+.debuber-log:last-child {
+  border-bottom: none;
+}
+
+.debuber-log:hover {
+  background: var(--debuber-bg-secondary);
+}
+
+.debuber-log__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.debuber-log__level {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.debuber-log__level--debug {
+  background: rgba(136, 136, 136, 0.2);
+  color: var(--debuber-debug);
+}
+
+.debuber-log__level--info {
+  background: rgba(0, 112, 243, 0.2);
+  color: var(--debuber-info);
+}
+
+.debuber-log__level--warn {
+  background: rgba(245, 166, 35, 0.2);
+  color: var(--debuber-warn);
+}
+
+.debuber-log__level--error {
+  background: rgba(255, 68, 68, 0.2);
+  color: var(--debuber-error);
+}
+
+.debuber-log__time {
+  color: var(--debuber-text-secondary);
+  font-size: 10px;
+}
+
+.debuber-log__group {
+  color: var(--debuber-info);
+  font-size: 10px;
+}
+
+.debuber-log__message {
+  color: var(--debuber-text);
+  word-break: break-word;
+}
+
+.debuber-log__data {
+  margin-top: 6px;
+  padding: 8px;
+  background: var(--debuber-bg-secondary);
+  border-radius: 4px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  color: var(--debuber-text-secondary);
+  font-size: 11px;
+}
+
+/* Footer */
+.debuber-panel__footer {
+  padding: 8px 16px;
+  border-top: 1px solid var(--debuber-border);
+  background: var(--debuber-bg-secondary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: var(--debuber-text-secondary);
+}
+
+.debuber-panel__persist-toggle {
+  background: transparent;
+  border: 1px solid var(--debuber-border);
+  color: var(--debuber-text-secondary);
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11px;
+  transition: all 0.15s ease;
+}
+
+.debuber-panel__persist-toggle:hover {
+  background: var(--debuber-border);
+  color: var(--debuber-text);
+}
+
+.debuber-panel__persist-toggle--active {
+  background: var(--debuber-info);
+  border-color: var(--debuber-info);
+  color: white;
+}
+
+.debuber-panel__persist-toggle--active:hover {
+  background: #0060d3;
+}
