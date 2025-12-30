@@ -1,6 +1,6 @@
 {
   "name": "debuber",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Visual debug logger for React/Next.js - floating bubble UI for in-browser debugging",
   "repository": {
     "type": "git",
