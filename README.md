@@ -13,7 +13,7 @@
 <p align="center">
   <a href="https://www.npmjs.com/package/debuber"><img src="https://img.shields.io/npm/v/debuber.svg" alt="npm version" /></a>
   <a href="https://www.npmjs.com/package/debuber"><img src="https://img.shields.io/npm/dm/debuber.svg" alt="npm downloads" /></a>
-  <a href="https://github.com/your-username/debuber/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/debuber.svg" alt="license" /></a>
+  <a href="https://github.com/GomatoX/debuber/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/debuber.svg" alt="license" /></a>
 </p>
 
 ---
