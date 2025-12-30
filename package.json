@@ -1,6 +1,6 @@
 {
   "name": "@gomatox/debuber",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Visual debug logger for React/Next.js - floating bubble UI for in-browser debugging",
   "repository": {
     "type": "git",
